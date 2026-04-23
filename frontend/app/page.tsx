@@ -2,6 +2,7 @@
 
 import Navbar from "../app/components/Navbar";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const roles = [
@@ -137,13 +138,14 @@ const positions = [
                     ease: "easeInOut",
                   }}
                 >
-                  <img
-                    src={img}
-                    className="w-full h-full object-cover"
-                    style={{
-                      objectPosition: i % 2 === 0 ? "50% 20%" : "50% 50%",
-                    }}
-                  />
+                 <Image
+  src={`/${img}`}
+  alt="bg"
+  fill
+  sizes="(max-width: 768px) 50vw, 300px"
+  quality={60}
+  className="object-cover"
+/>
 
                   <div className="absolute inset-0 bg-black/25" />
                 </motion.div>

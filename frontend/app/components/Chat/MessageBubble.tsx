@@ -15,19 +15,17 @@ export default function MessageBubble({ role, text, index, totalMessages }: any)
     }
   }, [isInView, controls]);
 
-  // Stagger animation based on message index
   const containerVariants = {
     hidden: { 
       opacity: 0, 
       y: 30,
       scale: 0.95,
-      filter: "blur(4px)",
+      // removed blur — it caused the frosted-glass flash on entry
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      filter: "blur(0px)",
       transition: {
         type: "spring",
         stiffness: 260,
@@ -183,24 +181,10 @@ export default function MessageBubble({ role, text, index, totalMessages }: any)
               {/* Top highlight */}
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-              {/* Message text with typing animation */}
-              <motion.div 
-                className="relative z-10 text-gray-100 text-[15px] leading-relaxed font-light"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-              >
-                {text.split('').map((char: string, i: number) => (
-                  <motion.span
-                    key={i}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: i * 0.01 }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </motion.div>
+              {/* Message text — plain render, no per-character animation */}
+              <div className="relative z-10 text-gray-100 text-[15px] leading-relaxed font-light">
+                {text}
+              </div>
 
               {/* Glow effect */}
               <motion.div

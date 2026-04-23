@@ -4,6 +4,8 @@ import ChatInput from "./ChatInput";
 import MessageBubble from "./MessageBubble";
 import { motion, AnimatePresence } from "framer-motion";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+
 export default function ChatWindow() {
   const [messages, setMessages] = useState<any[]>([]);
   const [isTyping, setIsTyping] = useState(false);
@@ -16,25 +18,50 @@ export default function ChatWindow() {
     setMessages(newMessages);
     setIsTyping(true);
 
-    // Simulate network delay
-    await new Promise((r) => setTimeout(r, 500));
+    try {
+      // Build history in the format the backend expects (exclude the message just added)
+      const history = messages.map((m) => ({
+        role: m.role,
+        content: m.text,
+      }));
 
-    let aiResponse = "";
-    const fake = "I am Akshay, an AI Engineer building scalable systems with a passion for creating intelligent solutions. 🚀";
+      const res = await fetch(`${API_URL}/chat/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text, history }),
+      });
 
-    const typingId = Date.now() + 1;
-    
-    for (let char of fake) {
-      await new Promise((r) => setTimeout(r, 20));
-      aiResponse += char;
+      if (!res.ok) {
+        throw new Error(`Server error: ${res.status}`);
+      }
 
+      const data = await res.json();
+      const reply: string = data.reply ?? "Sorry, I couldn't get a response.";
+
+      // Type out the reply character by character
+      const typingId = Date.now() + 1;
+      let typed = "";
+      for (const char of reply) {
+        await new Promise((r) => setTimeout(r, 18));
+        typed += char;
+        setMessages([
+          ...newMessages,
+          { role: "assistant", text: typed, id: typingId },
+        ]);
+      }
+    } catch (err) {
+      console.error("Chat API error:", err);
       setMessages([
         ...newMessages,
-        { role: "assistant", text: aiResponse, id: typingId },
+        {
+          role: "assistant",
+          text: "Oops! Something went wrong. Please try again.",
+          id: Date.now() + 1,
+        },
       ]);
+    } finally {
+      setIsTyping(false);
     }
-    
-    setIsTyping(false);
   };
 
   // Auto scroll with smooth behavior
