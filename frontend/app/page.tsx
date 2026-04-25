@@ -4,6 +4,18 @@ import Navbar from "../app/components/Navbar";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+type HeroProps = {
+  text: string;
+};
+
+type SectionProps = {
+  children: React.ReactNode;
+};
+
+type BlockProps = {
+  title: string;
+  children: React.ReactNode;
+};
 
 const roles = [
   "AI Engineer",
@@ -201,25 +213,25 @@ const positions = [
 
 /* ---------------- HERO ---------------- */
 
-function Hero({ text }: any) {
+function Hero({ text }: HeroProps) {
   return (
-    <div className="text-center max-w-2xl px-6 py-10 backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl shadow-2xl">
+    <div className="text-center max-w-2xl w-full px-4 sm:px-6 py-8 sm:py-10 backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl shadow-2xl">
 
-      <h1 className="text-5xl md:text-6xl font-bold">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
         Hi, I’m <span className="text-purple-400">Akshay</span> 👋
       </h1>
 
-      <div className="mt-4 text-xl text-purple-300 font-mono">
+      <div className="mt-4 text-base sm:text-lg md:text-xl text-purple-300 font-mono">
         {text}
         <span className="animate-pulse">|</span>
       </div>
 
-      <p className="mt-6 text-gray-200">
+      <p className="mt-4 sm:mt-6 text-gray-200 text-sm sm:text-base">
         I design and build scalable AI systems, RAG pipelines, and GPU-accelerated backend services.
       </p>
 
       <motion.div
-        className="mt-6 h-[2px] w-24 bg-purple-500 mx-auto"
+        className="mt-6 h-[2px] w-16 sm:w-24 bg-purple-500 mx-auto"
         animate={{ width: [20, 120, 20] }}
         transition={{ duration: 3, repeat: Infinity }}
       />
@@ -229,28 +241,30 @@ function Hero({ text }: any) {
 
 /* ---------------- SECTION ---------------- */
 
-function Section({ children }: any) {
+function Section({ children }: SectionProps) {
   return (
-    <div className="h-screen flex items-center justify-center px-6 relative z-10">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-16 sm:py-20 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 60, filter: "blur(6px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.8 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="w-full flex justify-center"
       >
         {children}
       </motion.div>
     </div>
   );
 }
-
 /* ---------------- BLOCK ---------------- */
 
-function Block({ title, children }: any) {
+function Block({ title, children }: BlockProps) {
   return (
-    <div className="text-center max-w-xl">
-      <h2 className="text-3xl font-bold">{title}</h2>
-      <p className="mt-4 text-gray-300">{children}</p>
+    <div className="text-center max-w-xl px-2 sm:px-4">
+      <h2 className="text-2xl sm:text-3xl font-bold">{title}</h2>
+      <p className="mt-3 sm:mt-4 text-gray-300 text-sm sm:text-base leading-relaxed">
+        {children}
+      </p>
     </div>
   );
 }
