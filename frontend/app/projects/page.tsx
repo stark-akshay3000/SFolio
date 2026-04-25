@@ -29,7 +29,7 @@ const featured = [
     title: "DXBot (AI Communication Platform)",
     problem: "Fragmented communication with no AI-assisted workflows.",
     solution:
-      "Built multi-modal AI chat system with WebSockets, group chat, document ingestion, and RAG pipeline.",
+      "Built an enterprise-grade AI communication platform with multi-modal communication support, enabling realtime WebSocket streaming, session-scoped 1:1 and group conversations (multi-user + bot), document ingestion, and automated Slack notifications — improving team responsiveness and async collaboration. chat, document ingestion, and RAG pipeline",
     impact:
       "Improved collaboration and response accuracy with fallback retrieval and role-aware context.",
     tech: ["FastAPI", "Next.js", "LangGraph", "RAG", "PgVector"],
@@ -47,6 +47,17 @@ const featured = [
     live: false,
   },
   {
+  title: "Agentic AI CRM System (LangGraph)",
+  problem: "Sales reps struggled with manual CRM updates, leading to incomplete records and lost interaction insights.",
+  solution:
+    "Designed a LangGraph-based AI agent with dynamic tool selection and reasoning loop. Developed tools like Log Interaction and Edit Interaction to automatically extract, enrich, and update CRM data from natural language inputs using LLMs and rule-based processing.",
+  impact:
+    "Automated CRM workflows, improved data accuracy, and enabled seamless correction and enrichment of interaction data with minimal user effort.",
+  tech: ["FastAPI", "LangGraph", "LLM", "PostgreSQL", "SQLAlchemy"],
+  metrics: ["Agent-based system", "Structured data extraction", "Context-aware updates"],
+  live: false,
+},
+  {
     title: "Vector Listing (GPU Image API)",
     problem: "Image pipelines lacked performance and scalability.",
     solution:
@@ -56,6 +67,22 @@ const featured = [
     metrics: ["GPU inference", "High throughput"],
     live: true,
   },
+  {
+  title: "Prior Authorization Copilot (Advanced Imaging AI Agent)",
+  problem: "Manual prior authorization for imaging (e.g., lumbar spine MRI) is time-consuming, error-prone, and often leads to denials due to missing documentation or unclear policy interpretation.",
+  solution:
+    "Built an agentic AI copilot using LangGraph that orchestrates a multi-step workflow: fetching patient data from FHIR, parsing payer policies into structured criteria, matching clinical evidence, detecting documentation gaps, and generating prior authorization drafts. Integrated secure FHIR context injection via A2A metadata and implemented fallback rule-based parsing for robustness.",
+  impact:
+    "Reduced manual effort in prior authorization workflows, improved accuracy of submissions, proactively identified denial risks, and enabled faster, structured clinical documentation generation.",
+  tech: ["LangGraph", "Google ADK (A2A)", "Gemini", "FHIR", "FastAPI", "Python"],
+  metrics: [
+    "Multi-step agentic workflow",
+    "FHIR-integrated clinical reasoning",
+    "Policy-to-criteria structured parsing",
+    "Automated denial risk detection"
+  ],
+  live: false,
+},
   {
     title: "IIIT Jabalpur ERP – Hostel Management Module",
     problem:
