@@ -4,6 +4,25 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 /* ---------------- FEATURED SYSTEMS ---------------- */
+type SectionTitleProps = {
+  title: string;
+  icon: string;
+};
+
+type CardProps = {
+  children: React.ReactNode;
+  delay?: number;
+};
+
+type InfoProps = {
+  label: string;
+  text: string;
+  color: string;
+};
+
+type TechProps = {
+  tech: string[];
+};
 
 const featured = [
   {
@@ -356,7 +375,7 @@ export default function Projects() {
 
 /* ---------------- COMPONENTS ---------------- */
 
-function SectionTitle({ title, icon }) {
+function SectionTitle({ title, icon }: SectionTitleProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
@@ -377,22 +396,23 @@ function SectionTitle({ title, icon }) {
   );
 }
 
-function Card({ children, delay = 0 }) {
+function Card({ children, delay = 0 }: CardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.5 }}
-      whileHover={{ 
+      whileHover={{
         y: -8,
-        transition: { type: "spring", stiffness: 300, damping: 20 }
+        transition: { type: "spring", stiffness: 300, damping: 20 },
       }}
       className="group relative p-4 sm:p-6 rounded-lg overflow-hidden cursor-pointer"
       style={{
-        background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
-        backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255,255,255,0.1)',
+        background:
+          "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
+        backdropFilter: "blur(10px)",
+        border: "1px solid rgba(255,255,255,0.1)",
       }}
     >
       {/* Animated border */}
@@ -405,32 +425,40 @@ function Card({ children, delay = 0 }) {
       <div className="absolute bottom-0 right-0 w-8 h-8 sm:w-12 sm:h-12 border-r-2 border-b-2 border-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       {/* Scan line effect */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 opacity-0 group-hover:opacity-100"
-        initial={{ top: '-100%' }}
-        whileHover={{ 
-          top: '100%',
-          transition: { duration: 1, repeat: Infinity }
+        initial={{ top: "-100%" }}
+        whileHover={{
+          top: "100%",
+          transition: { duration: 1, repeat: Infinity },
         }}
       >
         <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
       </motion.div>
 
-      <div className="relative z-10 space-y-3 sm:space-y-4">{children}</div>
+      <div className="relative z-10 space-y-3 sm:space-y-4">
+        {children}
+      </div>
     </motion.div>
   );
 }
 
-function Info({ label, text, color }) {
+function Info({ label, text, color }: InfoProps) {
   return (
     <div className="space-y-1">
-      <span className={`${color} text-[10px] sm:text-xs font-bold font-mono tracking-wider`}>{label}</span>
-      <p className="text-gray-300 text-xs sm:text-sm leading-relaxed pl-2 sm:pl-3 border-l-2 border-gray-700">{text}</p>
+      <span
+        className={`${color} text-[10px] sm:text-xs font-bold font-mono tracking-wider`}
+      >
+        {label}
+      </span>
+      <p className="text-gray-300 text-xs sm:text-sm leading-relaxed pl-2 sm:pl-3 border-l-2 border-gray-700">
+        {text}
+      </p>
     </div>
   );
 }
 
-function Tech({ tech }) {
+function Tech({ tech }: TechProps) {
   return (
     <div className="flex flex-wrap gap-2 mt-3 sm:mt-4">
       {tech.map((t, i) => (
@@ -452,19 +480,21 @@ function Tech({ tech }) {
 function LiveBadge() {
   return (
     <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 rounded-full bg-green-400/10 border border-green-400/30 flex-shrink-0">
-      <motion.span 
+      <motion.span
         className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-green-400"
-        animate={{ 
+        animate={{
           scale: [1, 1.2, 1],
-          opacity: [1, 0.7, 1]
+          opacity: [1, 0.7, 1],
         }}
-        transition={{ 
+        transition={{
           duration: 2,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: "easeInOut",
         }}
       />
-      <span className="text-[10px] sm:text-xs font-bold text-green-400 font-mono">ONLINE</span>
+      <span className="text-[10px] sm:text-xs font-bold text-green-400 font-mono">
+        ONLINE
+      </span>
     </div>
   );
 }
