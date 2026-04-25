@@ -1,5 +1,5 @@
 "use client";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, Variants } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 export default function MessageBubble({ role, text, index, totalMessages }: any) {
@@ -15,27 +15,26 @@ export default function MessageBubble({ role, text, index, totalMessages }: any)
     }
   }, [isInView, controls]);
 
-  const containerVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-      scale: 0.95,
-      // removed blur — it caused the frosted-glass flash on entry
+ const containerVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 20,
+      delay: index * 0.05,
     },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        delay: index * 0.05,
-      },
-    },
-  };
+  },
+};
 
-  const shimmerVariants = {
+  const shimmerVariants: Variants = {
     initial: { x: "-100%" },
     animate: {
       x: "100%",
