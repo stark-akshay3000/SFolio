@@ -385,15 +385,74 @@ export default function Home() {
   </div>
 </Section>
 
-      <Section>
+  <Section>
+  <div className="flex justify-center">
+
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      className="
+        relative w-[320px] sm:w-[420px] h-[180px]
+        rounded-2xl overflow-hidden
+        border border-purple-500/20
+        shadow-[0_0_40px_rgba(168,85,247,0.25)]
+      "
+    >
+
+      {/* 🎬 BACKGROUND VIDEO */}
+      <video
+        src="/gojo.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* 🖤 DARK OVERLAY (important for readability) */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+
+      {/* 💫 subtle glow */}
+      <motion.div
+        className="absolute inset-0 bg-purple-500/10"
+        animate={{ opacity: [0.1, 0.25, 0.1] }}
+        transition={{ duration: 3, repeat: Infinity }}
+      />
+
+      {/* ⚡ CONTENT */}
+      <div className="relative z-10 h-full flex flex-col items-center justify-center gap-4">
+
+       <motion.h3
+  className="text-lg sm:text-xl font-semibold tracking-wide text-purple-200"
+  initial={{ opacity: 0, y: 8 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.3 }}
+>
+  <span className="bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent">
+    Talk to my AI 👾
+  </span>
+</motion.h3>
+
         <motion.a
           href="/chat"
           whileHover={{ scale: 1.08 }}
-          className="px-6 py-3 bg-white text-black rounded-xl font-medium"
+          whileTap={{ scale: 0.92 }}
+          className="
+            px-6 py-2 rounded-lg
+            bg-purple-500/90 text-black font-medium
+            shadow-[0_0_15px_rgba(168,85,247,0.6)]
+          "
         >
-          Talk to my AI →
+          Start Chat →
         </motion.a>
-      </Section>
+
+      </div>
+
+      {/* ⚡ edge glow */}
+      <div className="absolute inset-0 rounded-2xl pointer-events-none shadow-[inset_0_0_40px_rgba(168,85,247,0.2)]" />
+    </motion.div>
+
+  </div>
+</Section>
 
     </div>
   );
