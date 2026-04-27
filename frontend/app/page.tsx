@@ -24,7 +24,7 @@ const roles = [
 ];
 
 const images = [
-  "image1.jpg","image2.jpg","image3.jpeg","image4.jpeg","image5.jpeg",
+  "image1.jpg","image2.jpg","image3.jpeg","image4new.jpeg","image5.jpeg",
   "image6.jpeg","image7.jpeg","image8.jpg","image9.jpg","image10.jpg",
   "image11.jpeg","image12.jpeg",
 ];
