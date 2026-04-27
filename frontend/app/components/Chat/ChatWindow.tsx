@@ -42,7 +42,7 @@ export default function ChatWindow() {
       const typingId = Date.now() + 1;
       let typed = "";
       for (const char of reply) {
-        await new Promise((r) => setTimeout(r, 18));
+        await new Promise((r) => setTimeout(r, 3));
         typed += char;
         setMessages([
           ...newMessages,
