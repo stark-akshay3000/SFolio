@@ -24,63 +24,138 @@ type TechProps = {
   tech: string[];
 };
 
+type CompanyHeaderProps = {
+  name: string;
+  link?: string | null;
+};
+
 const featured = [
   {
     title: "DXBot (AI Communication Platform)",
+    company: "2Wins Inc",
     problem: "Fragmented communication with no AI-assisted workflows.",
     solution:
       "Built an enterprise-grade AI communication platform with multi-modal communication support, enabling realtime WebSocket streaming, session-scoped 1:1 and group conversations (multi-user + bot), document ingestion, and automated Slack notifications — improving team responsiveness and async collaboration. chat, document ingestion, and RAG pipeline",
-    impact:
-      "Improved collaboration and response accuracy with fallback retrieval and role-aware context.",
-    tech: ["FastAPI", "Next.js", "LangGraph", "RAG", "PgVector"],
-    metrics: ["1000+ users", "Realtime chat", "RAG enabled"],
+  impact:
+  "Served 40+ employees with an AI-native communication platform, transformed 500+ organizational documents into a conversational knowledge base reducing information discovery time by 70%, and automated Slack workflows to reduce manual coordination by 40%.",
+
+tech: [
+  "FastAPI",
+  "Next.js",
+  "LangGraph",
+  "LangChain",
+  "RAG",
+  "PgVector",
+  "WebSockets"
+],
+
+metrics: [
+  "40+ employees",
+  "500+ documents",
+  "70% faster search",
+  "40% less manual work"
+],
     live: true,
   },
   {
     title: "Form Express (AI Automation)",
+    company: "2Wins Inc",
     problem: "Manual subsidy form filling was slow and error-prone.",
     solution:
       "Automated crawling + extraction + validation pipeline using Playwright and AI reasoning.",
-    impact: "Reduced manual effort by 90% and improved data accuracy.",
-    tech: ["Playwright", "FastAPI", "OpenAI", "PostgreSQL"],
-    metrics: ["90% automation", "AI extraction"],
-    live: false,
+    impact:
+  "Reduced manual review effort by 90%, improved application accuracy using AI reasoning, optimized backend processing by 80%, and scaled to support 10,000+ concurrent records.",
+
+tech: [
+  "Playwright",
+  "FastAPI",
+  "OpenAI",
+  "SvelteKit",
+  "PostgreSQL"
+],
+
+metrics: [
+  "90% less manual review",
+  "80% faster backend",
+  "10K+ records"
+],
+    live: true,
   },
   {
-  title: "Agentic AI CRM System (LangGraph)",
+  title: "Agentic AI CRM System",
+  company: "Hackathon Project",
   problem: "Sales reps struggled with manual CRM updates, leading to incomplete records and lost interaction insights.",
   solution:
     "Designed a LangGraph-based AI agent with dynamic tool selection and reasoning loop. Developed tools like Log Interaction and Edit Interaction to automatically extract, enrich, and update CRM data from natural language inputs using LLMs and rule-based processing.",
-  impact:
-    "Automated CRM workflows, improved data accuracy, and enabled seamless correction and enrichment of interaction data with minimal user effort.",
-  tech: ["FastAPI", "LangGraph", "LLM", "PostgreSQL", "SQLAlchemy"],
-  metrics: ["Agent-based system", "Structured data extraction", "Context-aware updates"],
+ impact:
+  "Automated CRM workflows with AI agents that extracted, enriched, and updated customer interaction data from natural language while improving data consistency and reducing manual effort.",
+
+tech: [
+  "FastAPI",
+  "LangGraph",
+  "LangChain",
+  "PostgreSQL",
+  "SQLAlchemy",
+  "Python"
+],
+
+metrics: [
+  "Agent-based workflow",
+  "Structured extraction",
+  "Context-aware updates"
+],
   live: false,
 },
   {
-    title: "Vector Listing (GPU Image API)",
-    problem: "Image pipelines lacked performance and scalability.",
+    title: "Vector Listing (Product Listing Automation)",
+    company: "2Wins Inc",
+    problem: "Creating product listings required users to switch between multiple applications to collect product information, manually extract attributes, and enter listing details, making the process slow, repetitive, and error-prone.",
     solution:
-      "Built GPU-accelerated ONNX pipeline for background removal and enhancement.",
-    impact: "Improved inference speed and output quality in production.",
-    tech: ["FastAPI", "ONNX", "CUDA", "AWS", "Terraform"],
-    metrics: ["GPU inference", "High throughput"],
+      "Built an end-to-end AI-powered product listing pipeline that processes uploaded product images using GPU-accelerated computer vision and AI models to extract listing information. The workflow was integrated directly into the Vector platform, enabling users to generate complete product listings without relying on external applications, resulting in faster listing creation and a significantly improved user experience.",
+    impact:
+  "Built production-grade GPU image processing APIs handling 100+ image requests, reduced processing latency by 30%, improved throughput by 20%, and automated AWS deployment with Terraform reducing deployment time by 50%.",
+
+tech: [
+  "FastAPI",
+  "ONNX Runtime",
+  "CUDA",
+  "OpenCV",
+  "AWS",
+  "Terraform"
+],
+
+metrics: [
+  "100+ image requests",
+  "30% lower latency",
+  "20% higher throughput",
+  "50% faster deployment"
+],
     live: true,
   },
   {
   title: "Prior Authorization Copilot (Advanced Imaging AI Agent)",
+  company: "Hackathon Project",
   problem: "Manual prior authorization for imaging (e.g., lumbar spine MRI) is time-consuming, error-prone, and often leads to denials due to missing documentation or unclear policy interpretation.",
   solution:
     "Built an agentic AI copilot using LangGraph that orchestrates a multi-step workflow: fetching patient data from FHIR, parsing payer policies into structured criteria, matching clinical evidence, detecting documentation gaps, and generating prior authorization drafts. Integrated secure FHIR context injection via A2A metadata and implemented fallback rule-based parsing for robustness.",
   impact:
-    "Reduced manual effort in prior authorization workflows, improved accuracy of submissions, proactively identified denial risks, and enabled faster, structured clinical documentation generation.",
-  tech: ["LangGraph", "Google ADK (A2A)", "Gemini", "FHIR", "FastAPI", "Python"],
-  metrics: [
-    "Multi-step agentic workflow",
-    "FHIR-integrated clinical reasoning",
-    "Policy-to-criteria structured parsing",
-    "Automated denial risk detection"
-  ],
+  "Automated prior authorization using a multi-agent workflow with FHIR-integrated clinical reasoning, enabling medical necessity validation, denial-risk prediction, and intelligent document gap detection to accelerate approval decisions.",
+
+tech: [
+  "FastAPI",
+  "LangGraph",
+  "Google ADK",
+  "FHIR",
+  "Python",
+  "Multi-Agent Systems"
+],
+
+metrics: [
+  "Multi-agent workflow",
+  "FHIR reasoning",
+  "Denial risk detection",
+  "Medical necessity validation"
+],
   live: false,
 },
   {
@@ -89,13 +164,45 @@ const featured = [
       "ERP lacked hostel management system causing manual inefficiency.",
     solution:
       "Built Django-based hostel module for room allocation, student records, and workflows.",
-    impact:
-      "Streamlined operations for 1000+ students and reduced admin workload.",
-    tech: ["Django", "PostgreSQL", "Semantic UI", "Python", "REST APIs"],
-    metrics: ["1000+ students", "ERP integration"],
+   impact:
+  "Developed and deployed a hostel management module for IIIT Jabalpur's ERP, streamlining hostel operations for 1,000+ students while improving administrative efficiency.",
+
+tech: [
+  "Django",
+  "Python",
+  "PostgreSQL",
+  "Semantic UI",
+  "REST APIs"
+],
+
+metrics: [
+  "1000+ students",
+  "ERP integration",
+  "Production deployment"
+],
     live: true,
   },
 ];
+
+/* Group featured systems: 2Wins Inc work together, hackathon work together,
+   anything without a company tag (e.g. the university ERP project) stands alone. */
+const featuredGroups = [
+  {
+    company: "2Wins Inc",
+    link: "https://www.2wins.ai/",
+    items: featured.filter((p) => p.company === "2Wins Inc"),
+  },
+  {
+    company: "Hackathon Project",
+    link: null,
+    items: featured.filter((p) => p.company === "Hackathon Project"),
+  },
+  {
+    company: null,
+    link: null,
+    items: featured.filter((p) => !p.company),
+  },
+].filter((g) => g.items.length > 0);
 
 /* ---------------- PROJECTS ---------------- */
 
@@ -131,7 +238,7 @@ const achievements = [
   },
   {
     title: "💻 Competitive Programming",
-    desc: "600+ problems solved across platforms.",
+    desc: "700+ problems solved across platforms.",
   },
 ];
 
@@ -313,40 +420,74 @@ export default function Projects() {
       {/* ---------------- FEATURED ---------------- */}
       <SectionTitle title="Featured Systems" icon="⚡" />
 
-      <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 px-4 sm:px-6 mb-16 sm:mb-20 relative z-10 max-w-7xl mx-auto">
-        {featured.map((p, i) => (
-          <Card key={i} delay={i * 0.1}>
-            <div className="flex justify-between items-start mb-4 gap-2">
-              <div className="flex-1">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent">
-                  {p.title}
-                </h2>
-                <div className="h-1 w-16 sm:w-20 bg-gradient-to-r from-cyan-400 to-transparent mt-2" />
-              </div>
-              {p.live && <LiveBadge />}
-            </div>
-
-            {mode !== "tech" && (
-              <>
-                <Info label="[ PROBLEM ]" text={p.problem} color="text-pink-400" />
-                <Info label="[ SOLUTION ]" text={p.solution} color="text-cyan-400" />
-                <Info label="[ IMPACT ]" text={p.impact} color="text-purple-400" />
-              </>
+      <div className="mb-16 sm:mb-20 relative z-10">
+        {featuredGroups.map((group, gi) => (
+          <div key={gi} className="mb-10 sm:mb-14 last:mb-0">
+            {group.company && (
+              <CompanyHeader name={group.company} link={group.link} />
             )}
+            <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 px-4 sm:px-6 max-w-7xl mx-auto">
+              {group.items.map((p, i) => (
+                <Card key={i} delay={i * 0.1}>
+                  <div className="flex justify-between items-start mb-4 gap-2">
+                    <div className="flex-1">
+                      <h2 className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent">
+                        {p.title}
+                      </h2>
+                      <div className="h-1 w-16 sm:w-20 bg-gradient-to-r from-cyan-400 to-transparent mt-2" />
+                    </div>
+                    {p.live && <LiveBadge />}
+                  </div>
 
-            {mode === "tech" && <Tech tech={p.tech} />}
+                 {/* ---------------- SYSTEM TAB ---------------- */}
+                {mode === "system" && (
+                  <>
+                    <Info
+                      label="[ PROBLEM ]"
+                      text={p.problem}
+                      color="text-pink-400"
+                    />
 
-            <div className="flex flex-wrap gap-2 mt-4">
-              {p.metrics.map((m) => (
-                <span
-                  key={m}
-                  className="text-[10px] px-2 sm:px-3 py-1 bg-gradient-to-r from-green-400/20 to-emerald-400/20 text-green-300 rounded-full border border-green-400/30 font-mono"
-                >
-                  ✓ {m}
-                </span>
+                    <Info
+                      label="[ SYSTEM ]"
+                      text={p.solution}
+                      color="text-cyan-400"
+                    />
+                  </>
+                )}
+
+                {/* ---------------- IMPACT TAB ---------------- */}
+                {mode === "impact" && (
+                  <>
+                    <Info
+                      label="[ IMPACT ]"
+                      text={p.impact}
+                      color="text-purple-400"
+                    />
+                  </>
+                )}
+
+                {/* ---------------- TECH TAB ---------------- */}
+                {mode === "tech" && (
+                  <>
+                    <Tech tech={p.tech} />
+                  </>
+                )}
+
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {p.metrics.map((m) => (
+                      <span
+                        key={m}
+                        className="text-[10px] px-2 sm:px-3 py-1 bg-gradient-to-r from-green-400/20 to-emerald-400/20 text-green-300 rounded-full border border-green-400/30 font-mono"
+                      >
+                        ✓ {m}
+                      </span>
+                    ))}
+                  </div>
+                </Card>
               ))}
             </div>
-          </Card>
+          </div>
         ))}
       </div>
 
@@ -419,6 +560,70 @@ function SectionTitle({ title, icon }: SectionTitleProps) {
         </h2>
         <div className="flex-1 h-[1px] sm:h-[2px] bg-gradient-to-r from-purple-400 via-pink-400 to-transparent" />
       </div>
+    </motion.div>
+  );
+}
+
+/* Company / context header shown above a group of featured cards.
+   For "2Wins Inc" it links out to the company site; for hackathon work
+   it just shows a trophy badge with no outbound link. */
+function CompanyHeader({ name, link }: CompanyHeaderProps) {
+  const isHackathon = name === "Hackathon Project";
+
+  const inner = (
+    <>
+      {isHackathon ? (
+        <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-amber-400/20 to-orange-500/20 border border-amber-400/40 text-lg sm:text-xl flex-shrink-0">
+          🏆
+        </div>
+      ) : (
+        <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 font-black text-black text-xs sm:text-sm tracking-tighter flex-shrink-0">
+          2W
+        </div>
+      )}
+      <div className="min-w-0">
+        <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-2">
+          {name}
+          {link && (
+            <span className="text-xs text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">
+              ↗
+            </span>
+          )}
+        </h3>
+        <p className="text-[10px] sm:text-xs text-gray-500 font-mono">
+          {isHackathon ? "Built during a hackathon" : "Full Stack AI Engineer @ 2Wins Inc"}
+        </p>
+      </div>
+    </>
+  );
+
+  const className =
+    "group flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 px-4 sm:px-6 max-w-7xl mx-auto relative z-10";
+
+  if (link) {
+    return (
+      <motion.a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className={`${className} cursor-pointer`}
+      >
+        {inner}
+      </motion.a>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      className={className}
+    >
+      {inner}
     </motion.div>
   );
 }

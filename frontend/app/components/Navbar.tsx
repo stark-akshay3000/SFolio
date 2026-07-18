@@ -102,7 +102,7 @@ export default function Navbar() {
               <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 AKSHAY
               </span>
-              <span className="text-white/40 font-mono">.dev</span>
+              <span className="text-white/40 font-mono"></span>
             </h1>
           </motion.div>
         </Link>
